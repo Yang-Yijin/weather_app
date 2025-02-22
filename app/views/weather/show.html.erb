@@ -1,0 +1,69 @@
+<div class="row">
+  <div class="col-12 mb-4">
+    <%= link_to "← Back to Home", root_path, class: "btn btn-outline-primary" %>
+  </div>
+</div>
+
+<% if @weather %>
+  <div class="row">
+    <div class="col-md-6 mb-4">
+      <div class="card">
+        <div class="card-header bg-primary text-white">
+          <h2 class="mb-0"><%= @weather['name'] %> - Current Weather</h2>
+        </div>
+        <div class="card-body">
+          <div class="d-flex align-items-center mb-4">
+            <h1 class="display-3 mb-0 me-3"><%= @weather['main']['temp'].round %>°C</h1>
+            <img src="http://openweathermap.org/img/w/<%= @weather['weather'][0]['icon'] %>.png" 
+                 alt="Weather icon" class="weather-icon" style="width: 80px; height: 80px;">
+          </div>
+          <h3 class="mb-4"><%= @weather['weather'][0]['description'].capitalize %></h3>
+          <div class="row">
+            <div class="col-6">
+              <p><strong>Feels Like:</strong> <%= @weather['main']['feels_like'].round %>°C</p>
+              <p><strong>Humidity:</strong> <%= @weather['main']['humidity'] %>%</p>
+            </div>
+            <div class="col-6">
+              <p><strong>Wind Speed:</strong> <%= @weather['wind']['speed'] %> m/s</p>
+              <p><strong>Pressure:</strong> <%= @weather['main']['pressure'] %> hPa</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 mb-4">
+      <div class="card">
+        <div class="card-header bg-info text-white">
+          <h3 class="mb-0">5-Day Forecast</h3>
+        </div>
+        <div class="card-body p-0">
+          <div class="table-responsive">
+            <table class="table table-hover mb-0">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Temp</th>
+                  <th>Weather</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @forecast['list'].each_slice(8).map(&:first).each do |forecast| %>
+                  <tr>
+                    <td><%= Time.at(forecast['dt']).strftime('%B %d') %></td>
+                    <td><%= forecast['main']['temp'].round %>°C</td>
+                    <td class="d-flex align-items-center">
+                      <img src="http://openweathermap.org/img/w/<%= forecast['weather'][0]['icon'] %>.png" 
+                           alt="Weather icon" class="weather-icon me-2">
+                      <%= forecast['weather'][0]['description'].capitalize %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

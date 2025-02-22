@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for(:title) || "Weather App" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <style>
+      @font-face {
+        font-family: 'W7';
+        src: url(<%= asset_path 'W7.ttf' %>);
+      }
+      
+      body {
+        font-family: 'W7', Arial, sans-serif !important;
+      }
+    </style>
+    
+    <%= yield :head %>
+
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application.bootstrap", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
+      <div class="container">
+        <a class="navbar-brand mx-auto display-4" href="/">Weather App</a>
+      </div>
+    </nav>
+
+    <div class="container">
+      <%= yield %>
+    </div>
+
+    <!-- 添加页脚 -->
+    <footer class="footer mt-5 py-3 bg-light">
+      <div class="container text-center">
+        <span class="text-muted">Weather App &copy; <%= Time.current.year %></span>
+      </div>
+    </footer>
+  </body>
+</html>
