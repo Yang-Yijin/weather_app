@@ -41,5 +41,5 @@ end
 #   gem "pg"
 # end
 
-gem "sqlite3", "~> 1.4"
+gem "sqlite3", "~> 2.6"
 gem "mini_racer", platforms: :ruby
