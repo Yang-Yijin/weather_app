@@ -22,7 +22,6 @@ gem "puma", ">= 5.0"
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 
 group :development, :test do
-  gem "sqlite3", "~> 1.4"
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
   gem "brakeman", require: false
   gem "rubocop-rails-omakase", require: false
@@ -43,3 +42,4 @@ end
 # end
 
 gem "sqlite3", "~> 1.4"
+gem "mini_racer", platforms: :ruby
