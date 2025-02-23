@@ -1,6 +1,6 @@
 databases:
   - name: weather_app_db
-    databaseName: weather_app_production
+    databaseName: weather_app
     user: weather_app
 
 services:
