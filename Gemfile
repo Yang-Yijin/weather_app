@@ -12,7 +12,7 @@ gem "jbuilder"
 gem "bootsnap", require: false
 
 # Bootstrap and its dependencies
-gem "bootstrap", "~> 5.3.0"
+gem "bootstrap", "~> 5.3.5"
 gem "sassc-rails"
 
 # Server
